@@ -6,6 +6,7 @@
 
 /dts-v1/;
 #include <nordic/nrf52840_qiaa.dtsi>
+#include <common/nordic/nrf52840_uf2_boot_mode.dtsi>
 #include <dt-bindings/led/led.h>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <layouts/common/ortho_4x12/1x2u.dtsi>
@@ -77,7 +78,6 @@
 		compatible = "gpio-leds";
 		blue_led: led_0 {
 			gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
-			label = "Blue LED";
 		};
 	};
 
@@ -142,6 +142,10 @@ layout_2x2u_transform:
 	status = "okay";
 };
 
+&reg1 {
+	regulator-initial-mode = <NRF5X_REG_MODE_DCDC>;
+};
+
 zephyr_udc0: &usbd {
 	status = "okay";
 };
@@ -158,11 +162,9 @@ zephyr_udc0: &usbd {
 		#size-cells = <1>;
 
 		sd_partition: partition@0 {
-			label = "softdevice";
 			reg = <0x00000000 0x00026000>;
 		};
 		code_partition: partition@26000 {
-			label = "code_partition";
 			reg = <0x00026000 0x000c6000>;
 		};
 
@@ -176,12 +178,10 @@ zephyr_udc0: &usbd {
 		 * if enabled.
 		 */
 		storage_partition: partition@ec000 {
-			label = "storage";
 			reg = <0x000ec000 0x00008000>;
 		};
 
 		boot_partition: partition@f4000 {
-			label = "adafruit_boot";
 			reg = <0x000f4000 0x0000c000>;
 		};
 	};
