@@ -70,6 +70,5 @@
 &none   &kp LGUI &kp LALT &kp LCTRL &kp LSHFT &none   &mkp MB1         &mkp MB2         &mkp MB3        &none           &none   &none
             >;
         };
-
     };
 };
