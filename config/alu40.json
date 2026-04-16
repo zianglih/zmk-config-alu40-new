@@ -61,7 +61,7 @@
       "identifier": "encoder_1",
       "compatible": "alps,ec11",
       "label": "ENCODER_ONE",
-      "enabled": false
+      "enabled": true
     }
   ]
 }
